@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+  <mapper namespace="falon.dao.UserMapper">
+	  	<resultMap id="userMap" type="falon.bean.User">
+	    	<id property="id" column="id" />
+	    	<result property="userName" column="userName"/> 
+	    	<result property="passWord" column="passWord"/>
+	    	<result property="nickName" column="nickName"/>
+	    	<result property="profilePhoto" column="profilePhoto"/>
+	    	<result property="phone" column="phone"/>
+	    	<result property="createTime" column="createtime"/>
+	    </resultMap>
+    
+  		<insert id="insert" parameterType="falon.bean.User" useGeneratedKeys="true" keyProperty="id">
+  			insert into falon_user(userName, passWord, nickName, profilePhoto, phone)
+  			values
+  			(#{userName}, #{passWord} , #{nickName} , #{profilePhoto}, #{phone})
+  		</insert>
+  		
+  		<delete id="delete" parameterType="int">
+  			delete from falon_user where id = #{id}
+  		</delete>
+  		
+  		<select id="find" parameterType="falon.bean.User" resultMap="userMap">
+  			select id, userName, passWord, nickName, profilePhoto, phone, createtime from falon_user 
+  			where id = #{id}
+  			<if test="userName != null">
+  				and userName = #{userName}
+  			</if>
+  			<if test="nickName != null">
+  				and nickName = #{nickName}
+  			</if>
+  			<if test="phone != null">
+  				and phone = #{phone}
+  			</if>
+  		</select>
+  		
+  		<select id="findByCondition" parameterType="falon.bean.User" resultMap="userMap">
+  			select id, userName, passWord, nickName, profilePhoto, phone from falon_user
+  			<where>
+  				<if test="id > 0">
+	  				id = #{id}
+	  			</if>
+	  			<if test="userName != null">
+	  				and userName = #{userName}
+	  			</if>
+	  			<if test="nickName != null">
+	  				and nickName = #{nickName}
+	  			</if>
+	  			<if test="phone != null">
+	  				and phone = #{phone}
+	  			</if>
+  			</where> 
+  		</select>
+  </mapper>
+  
+  
+  
+  
+  
+  
+  
+  
+  

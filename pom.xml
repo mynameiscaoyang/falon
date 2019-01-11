@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn</groupId>
+  <artifactId>falon.root</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>falon.dao</module>
+  	<module>falon.web</module>
+  	<module>falon.admin</module>
+  	<module>falon.service</module>
+  	<module>falon.bean</module>
+  </modules>
+</project>
